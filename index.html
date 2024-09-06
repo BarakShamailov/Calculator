@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+     <script src="code.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="main">
+    <div class="display">
+
+        <input id="display" placeholder="0" style="border: 2px solid black; padding: 0px;border-radius: 10px; font-size: 20px; margin: 2px; height: 44px; width: 222px;">
+    </div>
+    <div class="buttons">
+        <div class="buttons-line1">
+            <button onclick="clearDisplay()" class="btn-clear"> C </button>
+            <button onclick="operatorClicked(this)" class="btn-operator">-</button>
+            <button  onclick="operatorClicked(this)" class="btn-operator">+</button>
+             <button  onclick="deleteItem()" class="btn-delete"> ← </button>
+        </div>
+
+        <div class="buttons-line2">
+            <button onclick="displayText(this)" class="btn-num">1</button>
+            <button onclick="displayText(this)" class="btn-num">2</button>
+            <button onclick="displayText(this)" class="btn-num">3</button>
+            <button onclick="operatorClicked(this)" class="btn-operator">x</button>
+        </div>
+
+         <div class="buttons-line3">
+            <button onclick="displayText(this)" class="btn-num">4</button>
+            <button onclick="displayText(this)" class="btn-num">5</button>
+            <button onclick="displayText(this)" class="btn-num">6</button>
+            <button onclick="operatorClicked(this)" class="btn-operator">/</button>
+        </div>
+
+        <div class="buttons-line4">
+            <button onclick="displayText(this)" class="btn-num">7</button>
+            <button onclick="displayText(this)" class="btn-num">8</button>
+            <button onclick="displayText(this)" class="btn-num">9</button>
+            <button onclick="displayResult()" class="btn-result">=</button>
+        </div>
+        <div class="buttons-line5">
+            <button class="btn-operator">.</button>
+            <button onclick="displayText(this)" class="btn-num">0</button>
+            <button onclick="negativePositive()" class="btn-minusplus">+/-</button>
+        </div>
+
+    </div>
+
+
+</div>
+
+</body>
+</html>
