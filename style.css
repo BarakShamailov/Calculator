@@ -2,6 +2,7 @@ body{
     margin-top: 100px;
     display: flex;
     justify-content: center;
+    background-color: rgb(190, 246, 246);
 
 }
 .display{
@@ -90,4 +91,8 @@ body{
     height: 50px;
     border: 2px solid black;
     margin: 2px;
+}
+
+button:hover{
+    box-shadow: 0 0 2px 5px rgba(85, 85, 85, 0.5);
 }

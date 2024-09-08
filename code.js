@@ -148,3 +148,4 @@ function displayText(button) {
     }
     document.getElementById('display').value = nums.join("");
 }
+
