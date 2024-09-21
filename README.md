@@ -56,11 +56,6 @@ A simple calculator built using HTML, CSS, and JavaScript, implementing basic ar
 - The calculator rounds results to prevent overflow on the display.
 - Trying to divide by zero shows an error message.
 
-## Future Improvements
-
-- Adding memory functions like M+, M-, and MR.
-- Enhancing responsiveness and accessibility for mobile users.
-
 ## Technologies Used
 
 - **HTML**
@@ -69,6 +64,6 @@ A simple calculator built using HTML, CSS, and JavaScript, implementing basic ar
 
 ## Getting Started
 
-1. Clone the repository:
+1. Open the link below in your browser:
    ```bash
-   git clone https://github.com/yourusername/calculator-project.git
+   https://barakshamailov.github.io/Calculator/
