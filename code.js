@@ -44,7 +44,7 @@ function operate(num1, operator, num2) {
     if (operator === "-") {
         return subtract(num1, num2);
     }
-    if (operator === "x") {
+    if (operator === "x" || operator === "*") {
         return multiply(num1, num2);
     }
     if (operator === "/") {
@@ -71,23 +71,19 @@ function operatorClicked(operatorBtn) {
     nums = [];
 }
 
-function convertToFloat(num1,num2,operator)
-{
+function convertToFloat(num1, num2, operator) {
     let floatNum1 = parseInt(num1);
     let floatNum2 = parseInt(num2);
-    if(num1.includes("."))
-    {
+    if (num1.includes(".")) {
         floatNum1 = parseFloat(num1);
     }
-    if(num2.includes("."))
-    {
+    if (num2.includes(".")) {
         floatNum2 = parseFloat(num2);
     }
-    try{
-        return operate(floatNum1,operator,floatNum2);
+    try {
+        return operate(floatNum1, operator, floatNum2);
     }
-    catch(error)
-    {
+    catch (error) {
         throw error;
     }
 }
@@ -97,29 +93,28 @@ function displayResult() {
     if (items.length === 1 && items[0] === "") {
         document.getElementById('display').value = 0;
     }
-    let result = 0; 
+    let result = 0;
     if (items.length === 3 && isDigit(items[0]) && isDigit(items[2]) && operators.includes(items[1])) {
         try {
-            if(items[0].includes(".") || items[2].includes("."))
-            {
-                result = convertToFloat(items[0],items[2],items[1]);
-               
+            if (items[0].includes(".") || items[2].includes(".")) {
+                result = convertToFloat(items[0], items[2], items[1]);
+
             }
-            else{
-                
-                    result = operate(parseInt(items[0]), items[1], parseInt(items[2]));
+            else {
+
+                result = operate(parseInt(items[0]), items[1], parseInt(items[2]));
             }
             document.getElementById('display').value = parseFloat(result.toFixed(5));
             nums = [result];
             items = [];
             equalDone = true;
         }
-         catch (error) {
-                // Code to handle the error
-                alert(error.message);
-                clearDisplay();
-            }
+        catch (error) {
+            // Code to handle the error
+            alert(error.message);
+            clearDisplay();
         }
+    }
     else {
         alert("Your input is invalid, please try again in this order: 2 + 3 and then press on '='.");
         clearDisplay();
@@ -134,18 +129,49 @@ function displayText(button) {
         document.getElementById('display').value = button.textContent;
         equalDone = false;
     }
-    
-    if(!nums.includes(".") && button.textContent === "."){
+
+    if (!nums.includes(".") && button.textContent === ".") {
         nums.push(button.textContent);
     }
-    else if(!nums.includes(".") && button.textContent !== ".")
-    {
+    else if (!nums.includes(".") && button.textContent !== ".") {
         nums.push(button.textContent);
     }
-    else if(nums.includes(".") && button.textContent !== ".")
-    {
+    else if (nums.includes(".") && button.textContent !== ".") {
         nums.push(button.textContent);
     }
     document.getElementById('display').value = nums.join("");
 }
 
+function handleKeyboard() {
+    const input = document.getElementById('display');
+    input.addEventListener('keydown', function (event) {
+        
+        // Allow backspace, delete, arrow keys, and other special keys
+        if (event.key === 'Backspace') {
+            deleteItem();
+        }
+        if (event.key === '.') {
+            if (!nums.includes('.'))
+            {
+                nums.push(event.key);
+                input.value = nums.join('');
+            }
+        }
+        if (event.key === '/' || event.key === '+' || event.key === 'x' || event.key === '*' || event.key === '-') {
+            items.push(nums.join(""), event.key);
+            nums = [];
+        }
+        if (event.key === '=') {
+            displayResult();
+        }
+        
+        // Allow digits input
+        if (/^[0-9]$/.test(event.key)) {
+            nums.push(event.key);
+            input.value = nums.join('');
+        }
+        event.preventDefault(); 
+    });
+
+}
+handleKeyboard();
